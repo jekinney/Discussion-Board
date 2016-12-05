@@ -22,4 +22,9 @@ class Board extends Model
 	{
 		return $this->hasMany(Topic::class);
 	}
+
+    public function votes()
+    {
+        return $this->morphMany(\App\Site\Models\Vote::class, 'voteable');
+    }
 }

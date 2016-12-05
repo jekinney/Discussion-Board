@@ -14,4 +14,19 @@ class Reply extends Model
     	'hidden',
     	'hidden_by',
     ];
+
+    public function user()
+    {
+    	return $this->belongsTo(\App\Users\Models\User::class);
+    }
+
+    public function topic()
+    {
+    	return $this->belongsTo(Topic::class);
+    }
+    
+    public function votes()
+    {
+        return $this->morphMany(\App\Site\Models\Vote::class, 'voteable');
+    }
 }

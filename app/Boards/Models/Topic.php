@@ -33,4 +33,9 @@ class Topic extends Model
     {
     	return $this->belongsTo(\App\Users\Models\User::class);
     }
+
+    public function votes()
+    {
+        return $this->morphMany(\App\Site\Models\Vote::class, 'voteable');
+    }
 }

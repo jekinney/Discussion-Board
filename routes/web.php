@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'Boards\BoardController@index']);
+
 Route::group(['prefix' => 'board', 'as' => 'board.', 'namespace' => 'Boards'], function() {
 	Route::get('{slug}/show', ['as' => 'show', 'uses' => 'BoardController@show']);
 });
@@ -19,6 +20,7 @@ Route::group(['prefix' => 'board', 'as' => 'board.', 'namespace' => 'Boards'], f
 Route::group(['prefix' => 'board/topic', 'as' => 'topic.', 'namespace' => 'Boards'], function() {
 	Route::get('{slug}/show', ['as' => 'show', 'uses' => 'TopicController@show']);
 });
+
 
 Route::group(['prefix' => 'social', 'as' => 'social.', 'namespace' => 'Users'], function() {
 	Route::get('{provider}', ['as' => 'redirect', 'uses' => 'SocialController@redirectToProvider']);
@@ -35,4 +37,9 @@ Route::group(['as' => 'auth.', 'namespace' => 'Auth'], function() {
 	Route::get('login', ['as' => 'create', 'uses' => 'LoginController@create']);
 	Route::post('login', ['as' => 'store', 'uses' => 'LoginController@store']);
 	Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@destroy']);
+});
+
+Route::group(['prefix' => 'api/v1', 'namespace' => 'API'], function() {
+	Route::post('votes/count', 'VotesController@show');
+	Route::post('votes', 'VotesController@store');
 });
