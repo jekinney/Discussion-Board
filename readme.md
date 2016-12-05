@@ -1,4 +1,4 @@
-<p align="center">Proof of concept for a stand alone discusion board</p>
+<h2 align="center">Proof of concept for a stand alone discusion board</h2>
 
 
 ## Build With Laravel
